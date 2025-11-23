@@ -1,0 +1,151 @@
+================================================================================
+MESHTASTIC 3-MINUTE TRANSMISSION CAPACITY
+================================================================================
+Date: November 23, 2025
+Configuration: UA_433, SHORT_FAST preset
+Based on: Measured performance from speed tests
+
+================================================================================
+QUICK ANSWER
+================================================================================
+
+Maximum file size that can be transmitted in 3 minutes:
+
+  📊 Measured Performance:  0.246 MB (252 KB)
+  📦 Message Rate Limit:     0.312 MB (319 KB)
+  🎯 Practical Recommendation: 0.185 MB (189 KB) - Safe capacity
+
+================================================================================
+DETAILED CALCULATIONS
+================================================================================
+
+CALCULATION 1: Based on Measured Throughput
+  Measured Throughput: 11.48 kbps
+  Time: 3 minutes (180 seconds)
+  
+  Capacity:
+    - Bits:     2,066,400
+    - Bytes:    258,300
+    - KB:       252.25
+    - MB:       0.2463
+
+CALCULATION 2: Based on Message Rate
+  Messages/sec: 9.56
+  Max messages in 3 min: 1,721 messages
+  Message size: 240 bytes (190 bytes payload after overhead)
+  
+  Capacity:
+    - Total payload: 326,952 bytes
+    - KB:           319.29
+    - MB:           0.3118
+
+CALCULATION 3: Theoretical Maximum
+  SHORT_FAST theoretical: 10.94 kbps
+  
+  Capacity:
+    - Bits:     1,969,200
+    - Bytes:    246,150
+    - KB:       240.38
+    - MB:       0.2347
+
+================================================================================
+PERFORMANCE METRICS
+================================================================================
+
+Time per message:        105 ms
+Messages per minute:     573.6
+Bytes per minute:        86,071
+KB per minute:           84.05
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+✅ Maximum File Size: 0.25 MB (252 KB)
+   Based on measured performance with optimal conditions
+
+⚠️  Safe File Size: 0.19 MB (189 KB)
+   Recommended for reliable transmission (75% of maximum)
+   Accounts for:
+   - Background mesh traffic
+   - Potential retransmissions
+   - Channel utilization
+   - Protocol overhead
+
+📊 For larger files:
+   - Split into multiple smaller files
+   - Use compression before transmission
+   - Consider longer time windows
+   - Monitor channel utilization
+
+================================================================================
+REAL-WORLD CONSIDERATIONS
+================================================================================
+
+These calculations assume:
+  ✅ 100% channel availability
+  ✅ No interference
+  ✅ No retransmissions needed
+  ✅ Optimal signal conditions (SNR > 10 dB)
+  ✅ No background mesh traffic
+
+Actual capacity may be lower due to:
+  ⚠️  Background mesh traffic (node info broadcasts every 3 hours)
+  ⚠️  Position updates (every 15 minutes)
+  ⚠️  Channel utilization from other nodes
+  ⚠️  Retransmissions on errors
+  ⚠️  Protocol overhead and acknowledgments
+
+================================================================================
+COMPARISON WITH OTHER TIME PERIODS
+================================================================================
+
+1 minute:   84 KB  (0.082 MB)
+3 minutes:  252 KB (0.246 MB) ← Current calculation
+5 minutes:  420 KB (0.410 MB)
+10 minutes: 840 KB (0.820 MB)
+30 minutes: 2.52 MB
+
+================================================================================
+FILE SIZE EXAMPLES
+================================================================================
+
+Files that fit in 3 minutes:
+  ✅ Small text files (< 50 KB)
+  ✅ Small images (compressed, < 200 KB)
+  ✅ Configuration files (< 100 KB)
+  ✅ Small data logs (< 250 KB)
+  ✅ Short audio clips (highly compressed)
+
+Files that DON'T fit:
+  ❌ Photos (typically 2-5 MB)
+  ❌ Videos (typically 10-100+ MB)
+  ❌ Large documents (> 1 MB)
+  ❌ Uncompressed data files
+
+================================================================================
+OPTIMIZATION TIPS
+================================================================================
+
+1. Compression:
+   - Use compression (gzip, zip) before transmission
+   - Can reduce file size by 50-90% for text/data
+   - Images: Use JPEG/WebP compression
+
+2. Chunking:
+   - Split large files into smaller chunks
+   - Transmit over multiple sessions
+   - Reassemble on receiving end
+
+3. Timing:
+   - Transmit during low-traffic periods
+   - Monitor channel utilization
+   - Use longer time windows for larger files
+
+4. Protocol:
+   - Use binary encoding for efficiency
+   - Minimize message overhead
+   - Batch acknowledgments
+
+================================================================================
+

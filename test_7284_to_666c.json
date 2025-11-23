@@ -19,4 +19,15 @@ Split into 5243 messages (~200 bytes each)
 
 Starting file transfer...
 ======================================================================
-Progress: 0.0% (1/5243 messages)Progress: 1.0% (50/5243 messages)Progress: 1.9% (100/5243 messages)Progress: 2.9% (150/5243 messages)Progress: 3.8% (200/5243 messages)
+Progress: 0.0% (1/5243 messages)Progress: 1.0% (50/5243 messages)Progress: 1.9% (100/5243 messages)Progress: 2.9% (150/5243 messages)Progress: 3.8% (200/5243 messages)Progress: 4.8% (250/5243 messages)Progress: 5.7% (300/5243 messages)Progress: 6.7% (350/5243 messages)Progress: 7.6% (400/5243 messages)Progress: 8.6% (450/5243 messages)Progress: 9.5% (500/5243 messages)Progress: 10.5% (550/5243 messages)Progress: 11.4% (600/5243 messages)Progress: 12.4% (650/5243 messages)Progress: 13.4% (700/5243 messages)Progress: 14.3% (750/5243 messages)Progress: 15.3% (800/5243 messages)Progress: 16.2% (850/5243 messages)Progress: 17.2% (900/5243 messages)Progress: 18.1% (950/5243 messages)Progress: 19.1% (1000/5243 messages)Progress: 20.0% (1050/5243 messages)Progress: 21.0% (1100/5243 messages)Meshtastic serial port disconnected, disconnecting... read failed: [Errno 6] Device not configured
+
+❌ Message 1105 failed: Timed out waiting for connection completion
+
+❌ Message 1106 failed: Timed out waiting for connection completion
+
+❌ Message 1107 failed: Timed out waiting for connection completion
+
+❌ Message 1108 failed: Timed out waiting for connection completion
+
+❌ Message 1109 failed: Timed out waiting for connection completion
+Progress: 21.9% (1150/5243 messages)Progress: 22.9% (1200/5243 messages)
