@@ -1,0 +1,199 @@
+================================================================================
+MESHTASTIC MESH SPEED TESTING GUIDE
+================================================================================
+Date: November 23, 2025
+
+This guide explains multiple methods to test data transmission speed
+between your Meshtastic mesh nodes.
+
+================================================================================
+METHOD 1: MESSAGE SPEED TEST (Python Script)
+================================================================================
+
+The test_mesh_speed.py script measures actual message transmission speed
+between nodes.
+
+Usage:
+  python3 test_mesh_speed.py --port <device_port> --target <node_name> [options]
+
+Examples:
+  # Test speed from Device 1 to Device 2
+  python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --count 20
+
+  # Test with larger messages
+  python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --size 200 --count 10
+
+  # Simple ping test
+  python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --ping --count 5
+
+Options:
+  --port <port>      Serial port of sender device
+  --target <name>    Target node name or short name
+  --count <n>        Number of test messages (default: 10)
+  --size <bytes>     Message size in bytes (default: 100)
+  --ping             Run ping test instead of speed test
+
+What it measures:
+  - Message transmission time
+  - Success rate
+  - Average/minimum/maximum latency
+  - Effective throughput (bps, kbps)
+  - Messages per second
+
+================================================================================
+METHOD 2: RANGE TEST MODULE (Built-in Meshtastic Feature)
+================================================================================
+
+Meshtastic has a built-in Range Test Module that can measure signal quality
+and data transmission over time.
+
+Enable Range Test Module:
+  python3 -m meshtastic --port <port> --set range_test.enabled true
+
+Configure Sender:
+  python3 -m meshtastic --port <port> --set range_test.sender <node_number>
+  python3 -m meshtastic --port <port> --set range_test.save true
+
+Configure Receiver:
+  python3 -m meshtastic --port <port> --set range_test.enabled true
+  python3 -m meshtastic --port <port> --set range_test.save true
+
+Recommended intervals for SHORT_FAST preset:
+  - Test interval: 15 seconds
+
+View Results:
+  python3 -m meshtastic --port <port> --info | grep -A 10 "range"
+
+Export to CSV:
+  The range test module can save data to CSV for analysis.
+
+================================================================================
+METHOD 3: MANUAL MESSAGE TIMING
+================================================================================
+
+Simple method using Meshtastic CLI:
+
+1. Send message and time it:
+   time python3 -m meshtastic --port <port> --sendtext "TEST_MESSAGE" --dest <node_num>
+
+2. Monitor mesh activity:
+   python3 -m meshtastic --port <port> --info | grep -A 5 "deviceMetrics"
+
+3. Check signal quality:
+   python3 -m meshtastic --port <port> --info | grep -E "snr|rssi"
+
+================================================================================
+METHOD 4: STRESS TEST (Built-in)
+================================================================================
+
+Meshtastic has a built-in stress test:
+
+  python3 -m meshtastic --port <port> --test
+
+This runs stress tests against all connected nodes.
+
+================================================================================
+METHOD 5: MONITOR DEVICE METRICS
+================================================================================
+
+Monitor real-time performance metrics:
+
+1. Check channel utilization:
+   python3 -m meshtastic --port <port> --info | grep "channelUtilization"
+
+2. Check air utilization:
+   python3 -m meshtastic --port <port> --info | grep "airUtilTx"
+
+3. Monitor SNR (Signal-to-Noise Ratio):
+   python3 -m meshtastic --port <port> --info | grep "snr"
+
+Higher SNR = better signal quality = potentially faster transmission
+
+================================================================================
+EXPECTED PERFORMANCE (SHORT_FAST on UA_433)
+================================================================================
+
+With SHORT_FAST preset on 433 MHz:
+  - Theoretical max: ~50 kbps
+  - Practical throughput: ~10-30 kbps (depending on conditions)
+  - Message latency: 100-500ms (close range)
+  - Packet size: Up to ~240 bytes per message
+
+Factors affecting speed:
+  - Distance between nodes
+  - Signal quality (SNR)
+  - Channel utilization
+  - Message size
+  - Number of hops (if not direct)
+
+================================================================================
+TESTING PROCEDURE
+================================================================================
+
+1. Verify all devices are connected:
+   python3 -m meshtastic --port /dev/cu.usbserial-0001 --info
+   python3 -m meshtastic --port /dev/cu.usbserial-4 --info
+
+2. Check mesh connectivity:
+   Ensure all devices can see each other in the mesh
+
+3. Run speed test:
+   python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --count 20
+
+4. Test in both directions:
+   # Device 1 → Device 2
+   python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284
+   
+   # Device 2 → Device 1
+   python3 test_mesh_speed.py --port /dev/cu.usbserial-4 --target 666c
+
+5. Test with different message sizes:
+   python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --size 50
+   python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --size 100
+   python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --size 200
+
+6. Compare results and identify bottlenecks
+
+================================================================================
+INTERPRETING RESULTS
+================================================================================
+
+Good Performance Indicators:
+  ✅ Success rate > 95%
+  ✅ Average latency < 500ms (close range)
+  ✅ Consistent timing (low variance)
+  ✅ SNR > 10 dB
+  ✅ Low channel utilization
+
+Poor Performance Indicators:
+  ❌ Success rate < 80%
+  ❌ High latency (> 1 second)
+  ❌ High variance in timing
+  ❌ SNR < 0 dB
+  ❌ High channel utilization
+
+Troubleshooting:
+  - If speed is low, check SNR values
+  - If messages fail, check mesh connectivity
+  - If latency is high, verify devices are on same channel
+  - If inconsistent, check for interference
+
+================================================================================
+QUICK TEST COMMANDS
+================================================================================
+
+# Quick ping test
+python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --ping
+
+# Standard speed test (10 messages, 100 bytes)
+python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284
+
+# Extended test (20 messages, 200 bytes)
+python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --count 20 --size 200
+
+# Test all device pairs
+python3 test_mesh_speed.py --port /dev/cu.usbserial-0001 --target 7284 --count 10
+python3 test_mesh_speed.py --port /dev/cu.usbserial-4 --target 666c --count 10
+
+================================================================================
+

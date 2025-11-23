@@ -1,0 +1,89 @@
+================================================================================
+USB SERIAL PORT ACCESS REPORT - Mesh Node
+================================================================================
+Date: November 23, 2025
+System: macOS (darwin 25.1.0)
+
+DEVICE INFORMATION
+================================================================================
+Port Path:      /dev/cu.usbserial-0001
+Corresponding:  /dev/tty.usbserial-0001
+Last Modified:  Nov 23 14:23
+
+PERMISSIONS
+================================================================================
+Owner:          root (UID: 0)
+Group:          wheel (GID: 0)
+Permissions:    crw-rw-rw- (666)
+                ✅ User Read:  YES
+                ✅ User Write: YES
+                ✅ Group Read:  YES
+                ✅ Group Write: YES
+                ✅ Other Read:  YES
+                ✅ Other Write: YES
+
+USER ACCESS
+================================================================================
+Current User:   vovkes (UID: 501)
+Groups:         staff, admin, _developer, and others
+Read Access:    ✅ GRANTED
+Write Access:   ✅ GRANTED
+
+CURRENT STATUS
+================================================================================
+Status:         🔴 DEVICE IN USE
+Process:        Google Chrome (PID: 17683)
+User:           vovkes
+File Descriptor: 257u (character device)
+Data Offset:    0t46392 (46.4 KB transferred)
+
+ANALYSIS
+================================================================================
+✅ The USB serial port is properly connected and accessible
+✅ Your user account has full read/write permissions
+✅ The device is currently being used by Google Chrome
+
+This suggests you have a web application (likely using the Web Serial API)
+that is actively communicating with your mesh node. This is normal operation.
+
+AVAILABLE TOOLS
+================================================================================
+✅ screen      - /usr/bin/screen
+✅ cu          - /usr/bin/cu
+❌ minicom     - Not installed
+❌ pyserial    - Python library not installed
+
+TO ACCESS THE DEVICE
+================================================================================
+1. Via Chrome Web Serial API (currently active):
+   - Already in use by your web application
+   
+2. Via command line (requires closing Chrome connection):
+   $ screen /dev/cu.usbserial-0001 115200
+   
+3. Via Python (requires installing pyserial):
+   $ pip3 install pyserial
+   
+4. Via cu utility:
+   $ cu -l /dev/cu.usbserial-0001 -s 115200
+
+TROUBLESHOOTING
+================================================================================
+If you get "Resource busy" error:
+   - The device can only be opened by one process at a time
+   - Close the Chrome tab/application using the Web Serial API
+   - Then retry with command-line tools
+
+If you need concurrent access:
+   - Use the Web Serial API (Chrome) for your primary interface
+   - Monitor traffic with tools that don't require exclusive access
+
+CONCLUSION
+================================================================================
+✅ USB serial port access is FULLY FUNCTIONAL
+✅ Mesh node is connected and communicating
+✅ No permission issues detected
+✅ Device is actively in use by Chrome (Web Serial API)
+
+================================================================================
+

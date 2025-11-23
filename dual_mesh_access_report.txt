@@ -1,0 +1,222 @@
+================================================================================
+DUAL MESH NODE ACCESS REPORT - Complete Serial Port Analysis
+================================================================================
+Date: November 23, 2025
+System: macOS (darwin 25.1.0)
+User: vovkes (UID: 501)
+
+EXECUTIVE SUMMARY
+================================================================================
+✅ Both mesh nodes detected and accessible
+✅ All 4 serial port interfaces tested successfully
+✅ Full read/write permissions confirmed
+✅ No processes currently using the devices
+✅ Ready for communication
+
+DEVICE 1: MESH NODE #1
+================================================================================
+Call-out Device:    /dev/cu.usbserial-0001
+Terminal Device:    /dev/tty.usbserial-0001
+Last Modified:      Nov 23 14:23 (cu), Nov 23 14:16 (tty)
+Status:             🟢 FREE (not in use)
+
+Permissions:        crw-rw-rw- (666)
+                    ✅ User Read/Write:  GRANTED
+                    ✅ Group Read/Write: GRANTED
+                    ✅ Other Read/Write: GRANTED
+
+Access Test Results:
+  ✅ /dev/cu.usbserial-0001   - PASSED (can open, read, write, close)
+  ✅ /dev/tty.usbserial-0001  - PASSED (can open, read, write, close)
+
+DEVICE 2: MESH NODE #2
+================================================================================
+Call-out Device:    /dev/cu.usbserial-4
+Terminal Device:    /dev/tty.usbserial-4
+Last Modified:      Nov 23 14:28 (both)
+Status:             🟢 FREE (not in use)
+
+Permissions:        crw-rw-rw- (666)
+                    ✅ User Read/Write:  GRANTED
+                    ✅ Group Read/Write: GRANTED
+                    ✅ Other Read/Write: GRANTED
+
+Access Test Results:
+  ✅ /dev/cu.usbserial-4      - PASSED (can open, read, write, close)
+  ✅ /dev/tty.usbserial-4     - PASSED (can open, read, write, close)
+
+UNDERSTANDING CU vs TTY DEVICES
+================================================================================
+macOS creates two device files for each serial port:
+
+/dev/cu.* (Call-out device):
+  - Use this for most applications
+  - Non-blocking behavior
+  - Preferred for serial communication
+  - Does not wait for carrier detect
+
+/dev/tty.* (Terminal device):
+  - Traditional terminal device
+  - Waits for carrier detect signal
+  - Use only if you need terminal semantics
+
+RECOMMENDATION: Use /dev/cu.* devices for mesh node communication
+
+ACCESS MATRIX
+================================================================================
+Device                      Read  Write  Open  Close  Status
+---------------------------------------------------------------------------
+/dev/cu.usbserial-0001      ✅    ✅     ✅    ✅     Available
+/dev/tty.usbserial-0001     ✅    ✅     ✅    ✅     Available
+/dev/cu.usbserial-4         ✅    ✅     ✅    ✅     Available
+/dev/tty.usbserial-4        ✅    ✅     ✅    ✅     Available
+
+USAGE EXAMPLES
+================================================================================
+
+1. Connect to Mesh Node #1 with screen:
+   $ screen /dev/cu.usbserial-0001 115200
+
+2. Connect to Mesh Node #2 with screen:
+   $ screen /dev/cu.usbserial-4 115200
+
+3. Connect with cu utility (Node #1):
+   $ cu -l /dev/cu.usbserial-0001 -s 115200
+
+4. Python example (requires: pip3 install pyserial):
+   ```python
+   import serial
+   
+   # Mesh Node #1
+   ser1 = serial.Serial('/dev/cu.usbserial-0001', 115200, timeout=1)
+   
+   # Mesh Node #2
+   ser2 = serial.Serial('/dev/cu.usbserial-4', 115200, timeout=1)
+   
+   # Send data to Node #1
+   ser1.write(b'Hello from Node 1\n')
+   
+   # Read from Node #2
+   data = ser2.readline()
+   print(data.decode())
+   
+   ser1.close()
+   ser2.close()
+   ```
+
+5. Node.js example (requires: npm install serialport):
+   ```javascript
+   const { SerialPort } = require('serialport');
+   
+   const port1 = new SerialPort({
+     path: '/dev/cu.usbserial-0001',
+     baudRate: 115200
+   });
+   
+   const port2 = new SerialPort({
+     path: '/dev/cu.usbserial-4',
+     baudRate: 115200
+   });
+   ```
+
+6. Web Serial API (Chrome/Edge):
+   ```javascript
+   // Request port access
+   const port = await navigator.serial.requestPort();
+   
+   // Open with default settings
+   await port.open({ baudRate: 115200 });
+   
+   // Read/Write operations
+   const reader = port.readable.getReader();
+   const writer = port.writable.getWriter();
+   ```
+
+COMMON BAUD RATES FOR MESH NODES
+================================================================================
+- 9600    - Common default
+- 19200   - Low-speed reliable
+- 38400   - Medium speed
+- 57600   - High speed
+- 115200  - Very high speed (most common for modern devices)
+- 230400  - Maximum for many USB serial adapters
+
+TROUBLESHOOTING
+================================================================================
+
+Issue: "Resource busy"
+Solution: Only one process can access a serial port at a time.
+         Close other applications (screen, cu, Chrome) before connecting.
+
+Issue: "Permission denied"
+Solution: Your account already has full access (666 permissions).
+         This should not occur.
+
+Issue: No data received
+Check:
+  - Correct baud rate (115200 is most common)
+  - Proper ground connection
+  - TX/RX not swapped
+  - Device is powered on
+  - Firmware is running
+
+Issue: Garbled data
+Check:
+  - Baud rate mismatch
+  - Wrong parity settings
+  - Flow control issues
+
+DEVICE IDENTIFICATION
+================================================================================
+To identify which physical device is which:
+
+1. Disconnect both devices
+2. Run: ls -lt /dev/cu.usbserial* | head -2
+3. Connect first device
+4. Run command again - new device appears at top
+5. Label the device physically
+6. Repeat for second device
+
+SYSTEM INFORMATION
+================================================================================
+Available Tools:
+  ✅ screen (built-in)      - /usr/bin/screen
+  ✅ cu (built-in)          - /usr/bin/cu
+  ❌ minicom                - Not installed
+  ❌ pyserial               - Not installed (pip3 install pyserial)
+  ❌ node serialport        - Not installed (npm install serialport)
+
+Current User Groups: staff, admin, _developer, access_bpf, and others
+
+FINAL VERIFICATION
+================================================================================
+Test Date:          November 23, 2025 14:28+
+Tests Performed:    4 (all ports, both devices)
+Tests Passed:       4 / 4 (100%)
+Access Status:      ✅ FULL ACCESS CONFIRMED
+
+Both mesh nodes are:
+  ✅ Properly connected
+  ✅ Recognized by the system
+  ✅ Accessible with full permissions
+  ✅ Available for communication
+  ✅ Not blocked by other processes
+
+CONCLUSION
+================================================================================
+✅✅ BOTH MESH NODES ARE FULLY ACCESSIBLE ✅✅
+
+All serial ports on both devices have been tested and verified.
+You have complete read/write access to all 4 port interfaces.
+The devices are ready for mesh network communication.
+
+Recommended next steps:
+1. Determine required baud rate from device documentation
+2. Choose communication method (CLI tools, Python, Node.js, or Web)
+3. Install necessary libraries if needed
+4. Begin mesh network configuration
+
+================================================================================
+Generated by Mesh Access Validator v1.0
+================================================================================
+

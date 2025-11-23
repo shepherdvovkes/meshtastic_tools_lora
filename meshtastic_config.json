@@ -1,0 +1,150 @@
+{
+  "MESH NODE #1": {
+    "myInfo": {
+      "my_node_num": 2666030700,
+      "max_channels": null,
+      "has_wifi": null,
+      "has_bluetooth": null,
+      "firmware_version": null
+    },
+    "metadata": {
+      "firmware_version": "2.7.11.ee68575",
+      "device_state_version": 24,
+      "hw_model": 43,
+      "can_shutdown": null,
+      "has_wifi": null,
+      "has_bluetooth": null,
+      "has_ethernet": null
+    },
+    "nodes": {
+      "!9ee8666c": {
+        "num": 2666030700,
+        "user": {
+          "id": "!9ee8666c",
+          "longName": "Meshtastic 666c",
+          "shortName": "666c",
+          "macaddr": "nBOe6GZs",
+          "hwModel": "HELTEC_V3",
+          "publicKey": "Lm9hM4PFB+K0qqytXj7VaMusCfaKtTmCJHcFfmZmKCM=",
+          "isUnmessagable": false
+        },
+        "position": {},
+        "snr": null,
+        "lastHeard": null,
+        "deviceMetrics": {
+          "batteryLevel": 101,
+          "voltage": 4.345,
+          "channelUtilization": 0.0,
+          "airUtilTx": 0.0051666666,
+          "uptimeSeconds": 902
+        }
+      },
+      "!9ee87284": {
+        "num": 2666033796,
+        "user": {
+          "id": "!9ee87284",
+          "longName": "Meshtastic 7284",
+          "shortName": "7284",
+          "hwModel": "UNSET"
+        },
+        "position": null,
+        "snr": 11.75,
+        "lastHeard": null,
+        "deviceMetrics": {
+          "batteryLevel": 101,
+          "voltage": 4.401,
+          "channelUtilization": 0.22666666,
+          "airUtilTx": 0.00125,
+          "uptimeSeconds": 62
+        }
+      }
+    },
+    "localNode": {
+      "localConfig": "device {\n  node_info_broadcast_secs: 10800\n}\nposition {\n  position_broadcast_secs: 900\n  position_broadcast_smart_enabled: true\n  gps_update_interval: 120\n  position_flags: 811\n  broadcast_smart_minimum_distance: 100\n  broadcast_smart_minimum_interval_secs: 30\n  gps_mode: NOT_PRESENT\n}\npower {\n  wait_bluetooth_secs: 60\n  sds_secs: 4294967295\n  ls_secs: 300\n  min_wake_secs: 10\n}\nnetwork {\n  ntp_server: \"meshtastic.pool.ntp.org\"\n}\ndisplay {\n  screen_on_secs: 600\n}\nlora {\n  use_preset: true\n  modem_preset: SHORT_TURBO\n  bandwidth: 250\n  spread_factor: 11\n  coding_rate: 5\n  region: UA_868\n  hop_limit: 3\n  tx_enabled: true\n  tx_power: 14\n  sx126x_rx_boosted_gain: true\n  ignore_mqtt: true\n}\nbluetooth {\n  enabled: true\n  fixed_pin: 123456\n}\nsecurity {\n  public_key: \".oa3\\203\\305\\007\\342\\264\\252\\254\\255^>\\325h\\313\\254\\t\\366\\212\\2659\\202$w\\005~ff(#\"\n  private_key: \"\\310\\276\\332\\230l&\\306\\211\\340T\\323\\017h\\265\\236\\275\\234#7E0\\325\\362\\244\\225\\n\\022Lf\\347\\256m\"\n  admin_key: \"D\\367\\244~\\212\\243\\310\\335\\010\\257\\213\\021\\200h\\013\\343\\372j\\312\\222\\372\\307`\\037y\\035c\\002&#\\025\\036\"\n  admin_key: \"\"\n  admin_key: \"\"\n  serial_enabled: true\n}\n",
+      "moduleConfig": "mqtt {\n  address: \"mqtt.meshtastic.org\"\n  username: \"meshdev\"\n  password: \"large4cats\"\n  encryption_enabled: true\n  root: \"msh/UA_868\"\n}\nserial {\n}\nexternal_notification {\n}\nstore_forward {\n}\nrange_test {\n}\ntelemetry {\n  device_update_interval: 2147483647\n}\ncanned_message {\n  enabled: true\n}\naudio {\n}\nremote_hardware {\n}\nneighbor_info {\n}\nambient_lighting {\n  current: 10\n  red: 232\n  green: 102\n  blue: 108\n}\ndetection_sensor {\n  minimum_broadcast_secs: 45\n  detection_trigger_type: LOGIC_HIGH\n}\npaxcounter {\n}\n",
+      "channels": [
+        "settings {\n  psk: \"\\001\"\n  module_settings {\n    position_precision: 13\n  }\n}\nrole: PRIMARY\n",
+        "index: 1\nsettings {\n}\n",
+        "index: 2\nsettings {\n}\n",
+        "index: 3\nsettings {\n}\n",
+        "index: 4\nsettings {\n}\n",
+        "index: 5\nsettings {\n}\n",
+        "index: 6\nsettings {\n}\n",
+        "index: 7\nsettings {\n}\n"
+      ]
+    }
+  },
+  "MESH NODE #2": {
+    "myInfo": {
+      "my_node_num": 2666033796,
+      "max_channels": null,
+      "has_wifi": null,
+      "has_bluetooth": null,
+      "firmware_version": null
+    },
+    "metadata": {
+      "firmware_version": "2.7.11.ee68575",
+      "device_state_version": 24,
+      "hw_model": 43,
+      "can_shutdown": null,
+      "has_wifi": null,
+      "has_bluetooth": null,
+      "has_ethernet": null
+    },
+    "nodes": {
+      "!9ee87284": {
+        "num": 2666033796,
+        "user": {
+          "id": "!9ee87284",
+          "longName": "Meshtastic 7284",
+          "shortName": "7284",
+          "macaddr": "nBOe6HKE",
+          "hwModel": "HELTEC_V3",
+          "publicKey": "Lm9hM4PFB+K0qqytXj7VaMusCfaKtTmCJHcFfmZmKCM=",
+          "isUnmessagable": false
+        },
+        "position": {},
+        "snr": null,
+        "lastHeard": null,
+        "deviceMetrics": {
+          "batteryLevel": 101,
+          "voltage": 4.401,
+          "channelUtilization": 0.22666666,
+          "airUtilTx": 0.00125,
+          "uptimeSeconds": 62
+        }
+      },
+      "!9ee8666c": {
+        "num": 2666030700,
+        "user": {
+          "id": "!9ee8666c",
+          "longName": "Meshtastic 666c",
+          "shortName": "666c",
+          "macaddr": "nBOe6GZs",
+          "hwModel": "HELTEC_V3",
+          "publicKey": "Lm9hM4PFB+K0qqytXj7VaMusCfaKtTmCJHcFfmZmKCM=",
+          "isUnmessagable": false,
+          "raw": "id: \"!9ee8666c\"\nlong_name: \"Meshtastic 666c\"\nshort_name: \"666c\"\nmacaddr: \"\\234\\023\\236\\350fl\"\nhw_model: HELTEC_V3\npublic_key: \".oa3\\203\\305\\007\\342\\264\\252\\254\\255^>\\325h\\313\\254\\t\\366\\212\\2659\\202$w\\005~ff(#\"\nis_unmessagable: false\n"
+        },
+        "position": null,
+        "snr": -3.5,
+        "lastHeard": null,
+        "deviceMetrics": null
+      }
+    },
+    "localNode": {
+      "localConfig": "device {\n  node_info_broadcast_secs: 10800\n}\nposition {\n  position_broadcast_secs: 900\n  position_broadcast_smart_enabled: true\n  gps_update_interval: 120\n  position_flags: 811\n  broadcast_smart_minimum_distance: 100\n  broadcast_smart_minimum_interval_secs: 30\n  gps_mode: NOT_PRESENT\n}\npower {\n  wait_bluetooth_secs: 60\n  sds_secs: 4294967295\n  ls_secs: 300\n  min_wake_secs: 10\n}\nnetwork {\n  ntp_server: \"meshtastic.pool.ntp.org\"\n}\ndisplay {\n  screen_on_secs: 600\n}\nlora {\n  use_preset: true\n  modem_preset: SHORT_TURBO\n  bandwidth: 250\n  spread_factor: 11\n  coding_rate: 5\n  region: UA_868\n  hop_limit: 3\n  tx_enabled: true\n  tx_power: 14\n  sx126x_rx_boosted_gain: true\n  ignore_mqtt: true\n}\nbluetooth {\n  enabled: true\n  fixed_pin: 123456\n}\nsecurity {\n  public_key: \".oa3\\203\\305\\007\\342\\264\\252\\254\\255^>\\325h\\313\\254\\t\\366\\212\\2659\\202$w\\005~ff(#\"\n  private_key: \"\\310\\276\\332\\230l&\\306\\211\\340T\\323\\017h\\265\\236\\275\\234#7E0\\325\\362\\244\\225\\n\\022Lf\\347\\256m\"\n  admin_key: \"\"\n  admin_key: \"\"\n  admin_key: \"\"\n  serial_enabled: true\n}\n",
+      "moduleConfig": "mqtt {\n  address: \"mqtt.meshtastic.org\"\n  username: \"meshdev\"\n  password: \"large4cats\"\n  encryption_enabled: true\n  root: \"msh/UA_868\"\n}\nserial {\n}\nexternal_notification {\n}\nstore_forward {\n}\nrange_test {\n}\ntelemetry {\n  device_update_interval: 2147483647\n}\ncanned_message {\n  enabled: true\n}\naudio {\n}\nremote_hardware {\n}\nneighbor_info {\n}\nambient_lighting {\n  current: 10\n  red: 232\n  green: 114\n  blue: 132\n}\ndetection_sensor {\n  minimum_broadcast_secs: 45\n  detection_trigger_type: LOGIC_HIGH\n}\npaxcounter {\n}\n",
+      "channels": [
+        "settings {\n  psk: \"\\001\"\n  module_settings {\n    position_precision: 13\n  }\n}\nrole: PRIMARY\n",
+        "index: 1\nsettings {\n}\n",
+        "index: 2\nsettings {\n}\n",
+        "index: 3\nsettings {\n}\n",
+        "index: 4\nsettings {\n}\n",
+        "index: 5\nsettings {\n}\n",
+        "index: 6\nsettings {\n}\n",
+        "index: 7\nsettings {\n}\n"
+      ]
+    }
+  }
+}

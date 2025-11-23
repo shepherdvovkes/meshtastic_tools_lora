@@ -1,0 +1,96 @@
+================================================================================
+MESHTASTIC DEVICES CONFIGURATION CHANGES - UA-433 MHz
+================================================================================
+Date: November 23, 2025
+Applied to: Both devices (Meshtastic 666c and Meshtastic 7284)
+
+================================================================================
+CHANGES APPLIED
+================================================================================
+
+✅ REGION CHANGE:
+   OLD: UA_868 (868 MHz)
+   NEW: UA_433 (433 MHz) - Ukraine 433 MHz band
+   
+   Applied to:
+   - Device 1: /dev/cu.usbserial-0001 (Meshtastic 666c)
+   - Device 2: /dev/cu.usbserial-4 (Meshtastic 7284)
+
+✅ MODEM PRESET CHANGE (Fastest Data Speed):
+   OLD: SHORT_TURBO
+   NEW: SHORT_FAST (fastest data rate for close range)
+   
+   Applied to:
+   - Device 1: /dev/cu.usbserial-0001 (Meshtastic 666c)
+   - Device 2: /dev/cu.usbserial-4 (Meshtastic 7284)
+
+✅ AUTOMATIC ADJUSTMENTS:
+   TX Power: Automatically adjusted from 14 dBm to 10 dBm
+   (UA_433 region has different power regulations)
+
+================================================================================
+CURRENT CONFIGURATION (Both Devices)
+================================================================================
+
+LoRa Settings:
+  Region:           UA_433 (433 MHz - Ukraine)
+  Modem Preset:     SHORT_FAST (fastest data speed)
+  Bandwidth:        250 kHz
+  Spread Factor:    11
+  Coding Rate:      5
+  TX Power:         10 dBm (auto-adjusted for UA_433)
+  Hop Limit:        3
+  Channel:          0
+  Use Preset:       true
+
+Hardware:
+  Antennas:         400-450 MHz (compatible with 433 MHz)
+  Distance:         Same table (close range - ideal for SHORT_FAST)
+
+================================================================================
+VERIFICATION
+================================================================================
+
+Device 1 (Meshtastic 666c):
+  ✅ Region: UA_433
+  ✅ Preset: SHORT_FAST
+  ✅ TX Power: 10 dBm
+
+Device 2 (Meshtastic 7284):
+  ✅ Region: UA_433
+  ✅ Preset: SHORT_FAST
+  ✅ TX Power: 10 dBm
+
+Both devices are now configured for:
+  - 433 MHz operation (UA_433 region)
+  - Fastest data speed (SHORT_FAST preset)
+  - Close-range communication (same table)
+
+================================================================================
+EXPECTED PERFORMANCE
+================================================================================
+
+With SHORT_FAST preset on 433 MHz:
+  - Maximum data throughput
+  - Lower latency
+  - Optimized for close-range communication
+  - Ideal for same-table deployment
+
+Note: Devices may need to reconnect to the mesh after configuration change.
+The devices will automatically restart and apply the new settings.
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Wait for devices to restart (automatic after config change)
+2. Verify mesh connectivity between devices
+3. Test message transmission to confirm new settings
+4. Monitor signal quality (SNR) to ensure good communication
+
+To verify connectivity:
+  $ python3 -m meshtastic --port /dev/cu.usbserial-0001 --info
+  $ python3 -m meshtastic --port /dev/cu.usbserial-4 --info
+
+================================================================================
+

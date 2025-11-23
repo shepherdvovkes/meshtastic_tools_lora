@@ -1,0 +1,22 @@
+
+======================================================================
+MESHTASTIC FILE TRANSFER TEST
+======================================================================
+Port: /dev/cu.usbserial-0001
+Target Node: 666c
+File Size: 1.0 MB (1,048,576.0 bytes)
+======================================================================
+
+Connecting to device on /dev/cu.usbserial-0001...
+✅ Connected
+
+Nodes in mesh: 2
+✅ Found target: Meshtastic 666c (Node: !9ee8666c)
+   SNR: 11.75 dB
+
+Generating test data (1.0 MB)...
+Split into 5243 messages (~200 bytes each)
+
+Starting file transfer...
+======================================================================
+Progress: 0.0% (1/5243 messages)Progress: 1.0% (50/5243 messages)Progress: 1.9% (100/5243 messages)Progress: 2.9% (150/5243 messages)Progress: 3.8% (200/5243 messages)

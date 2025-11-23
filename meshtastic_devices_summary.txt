@@ -1,0 +1,163 @@
+================================================================================
+MESHTASTIC DEVICES CONFIGURATION SUMMARY
+================================================================================
+Date: November 23, 2025
+Fetched from: /dev/cu.usbserial-0001 and /dev/cu.usbserial-4
+
+================================================================================
+DEVICE 1: Meshtastic 666c
+================================================================================
+Serial Port:        /dev/cu.usbserial-0001
+Device Name:        Meshtastic 666c (short: 666c)
+Node Number:        2666030700
+Device ID:          jJ5Ab2CswcE3YFQwWQ2GOg==
+Hardware Model:     HELTEC_V3
+Firmware Version:   2.7.11.ee68575
+MAC Address:        9c:13:9e:e8:66:6c
+Reboot Count:       8
+Uptime:             962 seconds
+Battery Level:      101% (4.292V)
+Role:               CLIENT
+Firmware Edition:   VANILLA
+
+LoRa Configuration:
+  Region:           UA_868
+  Preset:           SHORT_TURBO
+  Bandwidth:        250 kHz
+  Spread Factor:    11
+  Coding Rate:      5
+  TX Power:         14 dBm
+  Hop Limit:        3
+  Channel:          0
+
+Bluetooth:          Enabled (RANDOM_PIN, fixed: 123456)
+WiFi:               Disabled
+GPS:                Not Present / Disabled
+Serial Enabled:     False (in device prefs), True (in security)
+
+Admin Keys:         Configured (1 key present)
+Public Key:         Lm9hM4PFB+K0qqytXj7VaMusCfaKtTmCJHcFfmZmKCM=
+Private Key:        yL7amGwmxongVNMPaLWevZwjN0Uw1fKklQoSTGbnrm0=
+
+Mesh Status:
+  Nodes in mesh:    2
+  - Self (666c):    Node 2666030700, Battery 101%, Voltage 4.292V
+  - Remote (7284):  Node 2666033796, SNR 11.75, Battery 101%, Voltage 4.401V
+
+Primary Channel URL:
+  https://meshtastic.org/e/#CgcSAQE6AggNEhgIARAIGPoBIAsoBTgPQANIAVAOaAHABgE
+
+================================================================================
+DEVICE 2: Meshtastic 7284
+================================================================================
+Serial Port:        /dev/cu.usbserial-4
+Device Name:        Meshtastic 7284 (short: 7284)
+Node Number:        2666033796
+Device ID:          jy95S1luI5akeiv0ezvb0g==
+Hardware Model:     HELTEC_V3
+Firmware Version:   2.7.11.ee68575
+MAC Address:        9c:13:9e:e8:72:84
+Reboot Count:       22
+Uptime:             662 seconds
+Battery Level:      101% (4.319V)
+Role:               CLIENT
+Firmware Edition:   VANILLA
+
+LoRa Configuration:
+  Region:           UA_868
+  Preset:           SHORT_TURBO
+  Bandwidth:        250 kHz
+  Spread Factor:    11
+  Coding Rate:      5
+  TX Power:         14 dBm
+  Hop Limit:        3
+  Channel:          0
+
+Bluetooth:          Enabled (RANDOM_PIN, fixed: 123456)
+WiFi:               Disabled
+GPS:                Not Present / Disabled
+Serial Enabled:     False (in device prefs), True (in security)
+
+Admin Keys:         Not configured (empty)
+Public Key:         Lm9hM4PFB+K0qqytXj7VaMusCfaKtTmCJHcFfmZmKCM=
+Private Key:        yL7amGwmxongVNMPaLWevZwjN0Uw1fKklQoSTGbnrm0=
+
+Mesh Status:
+  Nodes in mesh:    2
+  - Self (7284):    Node 2666033796, Battery 101%, Voltage 4.319V
+  - Remote (666c):  Node 2666030700, SNR -3.5
+
+Primary Channel URL:
+  https://meshtastic.org/e/#CgcSAQE6AggNEhgIARAIGPoBIAsoBTgPQANIAVAOaAHABgE
+
+================================================================================
+COMPARISON & ANALYSIS
+================================================================================
+
+COMMON CONFIGURATION:
+  ✅ Both devices use identical LoRa settings (UA_868, SHORT_TURBO)
+  ✅ Both devices share the same Primary Channel (same channel URL)
+  ✅ Both devices have same firmware version (2.7.11.ee68575)
+  ✅ Both devices are HELTEC_V3 hardware
+  ✅ Both devices are CLIENT role
+  ✅ Both devices have Bluetooth enabled with same PIN (123456)
+  ✅ Both devices have same public/private keys (same identity!)
+
+KEY DIFFERENCES:
+  ⚠️  Device 1 (666c) has Admin Keys configured
+  ⚠️  Device 2 (7284) has NO Admin Keys configured
+  ⚠️  Device 1 reboot count: 8
+  ⚠️  Device 2 reboot count: 22 (more frequent reboots)
+  ⚠️  Device 1 uptime: 962 seconds
+  ⚠️  Device 2 uptime: 662 seconds
+
+MESH CONNECTIVITY:
+  ✅ Both devices can see each other in the mesh
+  ✅ Device 1 sees Device 2 with SNR 11.75 (good signal)
+  ⚠️  Device 2 sees Device 1 with SNR -3.5 (weak signal, but connected)
+  ✅ Both devices show 2 nodes in mesh database
+
+IMPORTANT NOTES:
+  🔑 Both devices share the SAME public/private key pair!
+     This means they have the same identity - this is unusual and may
+     indicate they were cloned or configured from the same source.
+     Each device should have unique keys for proper mesh operation.
+
+  📡 Signal quality is asymmetric:
+     - Device 1 → Device 2: SNR 11.75 (good)
+     - Device 2 → Device 1: SNR -3.5 (weak but functional)
+
+  🔐 Admin Keys:
+     - Device 1 has admin keys configured (can be managed remotely)
+     - Device 2 has no admin keys (cannot be managed remotely)
+
+================================================================================
+CONFIGURATION FILES SAVED
+================================================================================
+  device1_config.txt         - Full info output from Device 1
+  device2_config.txt         - Full info output from Device 2
+  device1_config_json.json   - JSON config from Device 1
+  device2_config_json.json   - JSON config from Device 2
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+1. KEY MANAGEMENT:
+   Consider generating unique keys for each device to ensure proper
+   mesh identity and security.
+
+2. SIGNAL QUALITY:
+   Device 2 has weak signal to Device 1 (SNR -3.5). Consider:
+   - Adjusting device positions
+   - Checking antenna connections
+   - Verifying TX power settings
+
+3. ADMIN ACCESS:
+   If you need remote management, configure admin keys on Device 2.
+
+4. REBOOT ANALYSIS:
+   Device 2 has more reboots (22 vs 8). Monitor for stability issues.
+
+================================================================================
+

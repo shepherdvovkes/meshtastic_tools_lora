@@ -1,0 +1,373 @@
+================================================================================
+MESHTASTIC DEVICE CONFIGURATIONS
+Generated: 2025-11-23 14:39:19
+================================================================================
+
+================================================================================
+MESH NODE #1 - CONFIGURATION
+================================================================================
+
+📱 DEVICE INFO:
+--------------------------------------------------------------------------------
+   Node Number:      2666030700 (0x9ee8666c)
+   WiFi:             No
+   Bluetooth:        No
+
+🔧 HARDWARE INFO:
+--------------------------------------------------------------------------------
+   Hardware Model:   43
+   Firmware:         2.7.11.ee68575
+   WiFi:             No
+   Bluetooth:        No
+   Ethernet:         No
+   Can Shutdown:     No
+
+📡 MESH NODES (2):
+--------------------------------------------------------------------------------
+
+   Node: !9ee8666c
+      Name:          Meshtastic 666c
+      Short:         666c
+      MAC:           nBOe6GZs
+
+   Node: !9ee87284
+      Name:          Meshtastic 7284
+      Short:         7284
+      SNR:           11.75 dB
+
+⚙️  DEVICE CONFIGURATION:
+--------------------------------------------------------------------------------
+device {
+  node_info_broadcast_secs: 10800
+}
+position {
+  position_broadcast_secs: 900
+  position_broadcast_smart_enabled: true
+  gps_update_interval: 120
+  position_flags: 811
+  broadcast_smart_minimum_distance: 100
+  broadcast_smart_minimum_interval_secs: 30
+  gps_mode: NOT_PRESENT
+}
+power {
+  wait_bluetooth_secs: 60
+  sds_secs: 4294967295
+  ls_secs: 300
+  min_wake_secs: 10
+}
+network {
+  ntp_server: "meshtastic.pool.ntp.org"
+}
+display {
+  screen_on_secs: 600
+}
+lora {
+  use_preset: true
+  modem_preset: SHORT_TURBO
+  bandwidth: 250
+  spread_factor: 11
+  coding_rate: 5
+  region: UA_868
+  hop_limit: 3
+  tx_enabled: true
+  tx_power: 14
+  sx126x_rx_boosted_gain: true
+  ignore_mqtt: true
+}
+bluetooth {
+  enabled: true
+  fixed_pin: 123456
+}
+security {
+  public_key: ".oa3\203\305\007\342\264\252\254\255^>\325h\313\254\t\366\212\2659\202$w\005~ff(#"
+  private_key: "\310\276\332\230l&\306\211\340T\323\017h\265\236\275\234#7E0\325\362\244\225\n\022Lf\347\256m"
+  admin_key: "D\367\244~\212\243\310\335\010\257\213\021\200h\013\343\372j\312\222\372\307`\037y\035c\002&#\025\036"
+  admin_key: ""
+  admin_key: ""
+  serial_enabled: true
+}
+
+
+🔌 MODULE CONFIGURATION:
+--------------------------------------------------------------------------------
+mqtt {
+  address: "mqtt.meshtastic.org"
+  username: "meshdev"
+  password: "large4cats"
+  encryption_enabled: true
+  root: "msh/UA_868"
+}
+serial {
+}
+external_notification {
+}
+store_forward {
+}
+range_test {
+}
+telemetry {
+  device_update_interval: 2147483647
+}
+canned_message {
+  enabled: true
+}
+audio {
+}
+remote_hardware {
+}
+neighbor_info {
+}
+ambient_lighting {
+  current: 10
+  red: 232
+  green: 102
+  blue: 108
+}
+detection_sensor {
+  minimum_broadcast_secs: 45
+  detection_trigger_type: LOGIC_HIGH
+}
+paxcounter {
+}
+
+
+📻 CHANNELS (8):
+--------------------------------------------------------------------------------
+
+   Channel 0:
+   settings {
+  psk: "\001"
+  module_settings {
+    position_precision: 13
+  }
+}
+role: PRIMARY
+
+
+   Channel 1:
+   index: 1
+settings {
+}
+
+
+   Channel 2:
+   index: 2
+settings {
+}
+
+
+   Channel 3:
+   index: 3
+settings {
+}
+
+
+   Channel 4:
+   index: 4
+settings {
+}
+
+
+   Channel 5:
+   index: 5
+settings {
+}
+
+
+   Channel 6:
+   index: 6
+settings {
+}
+
+
+   Channel 7:
+   index: 7
+settings {
+}
+
+
+
+================================================================================
+MESH NODE #2 - CONFIGURATION
+================================================================================
+
+📱 DEVICE INFO:
+--------------------------------------------------------------------------------
+   Node Number:      2666033796 (0x9ee87284)
+   WiFi:             No
+   Bluetooth:        No
+
+🔧 HARDWARE INFO:
+--------------------------------------------------------------------------------
+   Hardware Model:   43
+   Firmware:         2.7.11.ee68575
+   WiFi:             No
+   Bluetooth:        No
+   Ethernet:         No
+   Can Shutdown:     No
+
+📡 MESH NODES (2):
+--------------------------------------------------------------------------------
+
+   Node: !9ee87284
+      Name:          Meshtastic 7284
+      Short:         7284
+      MAC:           nBOe6HKE
+
+   Node: !9ee8666c
+      Name:          Meshtastic 666c
+      Short:         666c
+      MAC:           nBOe6GZs
+      SNR:           -3.5 dB
+
+⚙️  DEVICE CONFIGURATION:
+--------------------------------------------------------------------------------
+device {
+  node_info_broadcast_secs: 10800
+}
+position {
+  position_broadcast_secs: 900
+  position_broadcast_smart_enabled: true
+  gps_update_interval: 120
+  position_flags: 811
+  broadcast_smart_minimum_distance: 100
+  broadcast_smart_minimum_interval_secs: 30
+  gps_mode: NOT_PRESENT
+}
+power {
+  wait_bluetooth_secs: 60
+  sds_secs: 4294967295
+  ls_secs: 300
+  min_wake_secs: 10
+}
+network {
+  ntp_server: "meshtastic.pool.ntp.org"
+}
+display {
+  screen_on_secs: 600
+}
+lora {
+  use_preset: true
+  modem_preset: SHORT_TURBO
+  bandwidth: 250
+  spread_factor: 11
+  coding_rate: 5
+  region: UA_868
+  hop_limit: 3
+  tx_enabled: true
+  tx_power: 14
+  sx126x_rx_boosted_gain: true
+  ignore_mqtt: true
+}
+bluetooth {
+  enabled: true
+  fixed_pin: 123456
+}
+security {
+  public_key: ".oa3\203\305\007\342\264\252\254\255^>\325h\313\254\t\366\212\2659\202$w\005~ff(#"
+  private_key: "\310\276\332\230l&\306\211\340T\323\017h\265\236\275\234#7E0\325\362\244\225\n\022Lf\347\256m"
+  admin_key: ""
+  admin_key: ""
+  admin_key: ""
+  serial_enabled: true
+}
+
+
+🔌 MODULE CONFIGURATION:
+--------------------------------------------------------------------------------
+mqtt {
+  address: "mqtt.meshtastic.org"
+  username: "meshdev"
+  password: "large4cats"
+  encryption_enabled: true
+  root: "msh/UA_868"
+}
+serial {
+}
+external_notification {
+}
+store_forward {
+}
+range_test {
+}
+telemetry {
+  device_update_interval: 2147483647
+}
+canned_message {
+  enabled: true
+}
+audio {
+}
+remote_hardware {
+}
+neighbor_info {
+}
+ambient_lighting {
+  current: 10
+  red: 232
+  green: 114
+  blue: 132
+}
+detection_sensor {
+  minimum_broadcast_secs: 45
+  detection_trigger_type: LOGIC_HIGH
+}
+paxcounter {
+}
+
+
+📻 CHANNELS (8):
+--------------------------------------------------------------------------------
+
+   Channel 0:
+   settings {
+  psk: "\001"
+  module_settings {
+    position_precision: 13
+  }
+}
+role: PRIMARY
+
+
+   Channel 1:
+   index: 1
+settings {
+}
+
+
+   Channel 2:
+   index: 2
+settings {
+}
+
+
+   Channel 3:
+   index: 3
+settings {
+}
+
+
+   Channel 4:
+   index: 4
+settings {
+}
+
+
+   Channel 5:
+   index: 5
+settings {
+}
+
+
+   Channel 6:
+   index: 6
+settings {
+}
+
+
+   Channel 7:
+   index: 7
+settings {
+}
+
+

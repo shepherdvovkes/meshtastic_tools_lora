@@ -1,0 +1,92 @@
+================================================================================
+DEVICE 3: MESHTASTIC BB14 - DETECTED
+================================================================================
+Date: November 23, 2025
+Serial Port: /dev/cu.usbmodem9C139EE7BB141
+
+================================================================================
+DEVICE INFORMATION
+================================================================================
+Device Name:        Meshtastic bb14 (short: bb14)
+Node Number:        2665986836
+Device ID:          DzYlTEtohxaJsZEludpdMg==
+Hardware Model:     HELTEC_WIRELESS_TRACKER (different from other devices)
+Firmware Version:   2.7.11.ee68575
+MAC Address:        9c:13:9e:e7:bb:14
+Reboot Count:       3
+Role:               CLIENT
+Firmware Edition:   VANILLA
+
+Serial Ports:
+  Call-out:          /dev/cu.usbmodem9C139EE7BB141
+  Terminal:         /dev/tty.usbmodem9C139EE7BB141
+  Permissions:      crw-rw-rw- (666) - Full access
+  Status:           🟢 FREE (not in use)
+
+================================================================================
+CURRENT LORA CONFIGURATION
+================================================================================
+Region:             ⚠️  UNSET (needs configuration!)
+Modem Preset:       LONG_FAST
+Bandwidth:          0 (using preset defaults)
+Spread Factor:      0 (using preset defaults)
+Coding Rate:        0 (using preset defaults)
+TX Power:           30 dBm (very high - may need adjustment)
+Hop Limit:          3
+Channel:            0
+Use Preset:         true
+
+================================================================================
+MESH STATUS
+================================================================================
+Nodes in mesh:      1 (only sees itself)
+  - Self (bb14):    Node 2665986836
+  - Remote nodes:   None visible
+
+⚠️  NOT CONNECTED to the other two devices (666c and 7284)
+
+================================================================================
+COMPARISON WITH OTHER DEVICES
+================================================================================
+Device 1 (666c):    HELTEC_V3, UA_433, SHORT_FAST, 10 dBm
+Device 2 (7284):    HELTEC_V3, UA_433, SHORT_FAST, 10 dBm
+Device 3 (bb14):    HELTEC_WIRELESS_TRACKER, UNSET, LONG_FAST, 30 dBm
+
+Key Differences:
+  ⚠️  Different hardware model (HELTEC_WIRELESS_TRACKER vs HELTEC_V3)
+  ⚠️  Region is UNSET (needs UA_433 configuration)
+  ⚠️  Using LONG_FAST instead of SHORT_FAST
+  ⚠️  TX Power is 30 dBm (much higher than other devices)
+  ⚠️  Not connected to mesh (only sees itself)
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+To connect Device 3 to the mesh network:
+
+1. Set Region to UA_433:
+   $ python3 -m meshtastic --port /dev/cu.usbmodem9C139EE7BB141 --set lora.region UA_433
+
+2. Set to fastest preset (SHORT_FAST) for same-table communication:
+   $ python3 -m meshtastic --port /dev/cu.usbmodem9C139EE7BB141 --set lora.modem_preset SHORT_FAST
+
+3. TX Power will auto-adjust for UA_433 region (likely to 10 dBm)
+
+4. After configuration, device should automatically connect to the mesh
+   and see the other two devices (666c and 7284)
+
+Note: HELTEC_WIRELESS_TRACKER may have different power limits than HELTEC_V3.
+The device will automatically adjust TX power based on region regulations.
+
+================================================================================
+ACCESS VERIFICATION
+================================================================================
+✅ Device detected and accessible
+✅ Full read/write permissions
+✅ Meshtastic device confirmed
+✅ Configuration can be read/written
+✅ Ready for configuration changes
+
+================================================================================
+

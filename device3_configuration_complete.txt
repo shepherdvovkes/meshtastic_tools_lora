@@ -1,0 +1,132 @@
+================================================================================
+DEVICE 3 (BB14) CONFIGURATION COMPLETE
+================================================================================
+Date: November 23, 2025
+Device: Meshtastic bb14 (Node 2665986836)
+Port: /dev/cu.usbmodem9C139EE7BB141
+
+================================================================================
+CONFIGURATION CHANGES APPLIED
+================================================================================
+
+✅ REGION CHANGE:
+   OLD: UNSET
+   NEW: UA_433 (433 MHz - Ukraine)
+   Status: Successfully configured
+
+✅ MODEM PRESET CHANGE:
+   OLD: LONG_FAST
+   NEW: SHORT_FAST (fastest data speed for close range)
+   Status: Successfully configured
+
+✅ AUTOMATIC ADJUSTMENTS:
+   TX Power: Will auto-adjust from 30 dBm to appropriate level for UA_433
+   (Device will set power according to UA_433 region regulations)
+
+================================================================================
+CURRENT CONFIGURATION (After Changes)
+================================================================================
+
+LoRa Settings:
+  Region:           UA_433 (433 MHz - Ukraine) ✅
+  Modem Preset:     SHORT_FAST (fastest data speed) ✅
+  TX Power:         Auto-adjusted for UA_433 region
+  Hop Limit:        3
+  Channel:          0 (PRIMARY - default channel)
+
+Hardware:
+  Model:            HELTEC_WIRELESS_TRACKER
+  Firmware:         2.7.11.ee68575
+  Antennas:         400-450 MHz (compatible with 433 MHz)
+
+================================================================================
+MESH NETWORK ALIGNMENT
+================================================================================
+
+All three devices are now configured identically:
+
+Device 1 (666c):
+  ✅ Region: UA_433
+  ✅ Preset: SHORT_FAST
+  ✅ Port: /dev/cu.usbserial-0001
+
+Device 2 (7284):
+  ✅ Region: UA_433
+  ✅ Preset: SHORT_FAST
+  ✅ Port: /dev/cu.usbserial-4
+
+Device 3 (bb14):
+  ✅ Region: UA_433
+  ✅ Preset: SHORT_FAST
+  ✅ Port: /dev/cu.usbmodem9C139EE7BB141 (may change after reconnect)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. DEVICE RESTART:
+   Device 3 has been configured and will restart automatically.
+   The USB port may change after restart.
+
+2. VERIFY CONNECTION:
+   After reconnecting Device 3:
+   $ ls -la /dev/cu.* | grep usb
+   $ python3 -m meshtastic --port <new_port> --info
+
+3. CHECK MESH CONNECTIVITY:
+   All three devices should now see each other:
+   $ python3 -m meshtastic --port /dev/cu.usbserial-0001 --info
+   $ python3 -m meshtastic --port /dev/cu.usbserial-4 --info
+   $ python3 -m meshtastic --port <device3_port> --info
+
+4. EXPECTED BEHAVIOR:
+   - All devices on UA_433 (433 MHz)
+   - All devices using SHORT_FAST (fastest data speed)
+   - All devices on same PRIMARY channel (default)
+   - All devices should see each other in mesh
+   - Optimized for same-table communication
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+If Device 3 doesn't appear in mesh:
+
+1. Check USB connection:
+   - Ensure device is properly connected
+   - Use data-capable USB cable (not power-only)
+   - Check for new port: ls -la /dev/cu.* | grep usb
+
+2. Verify configuration:
+   - Region should be UA_433
+   - Preset should be SHORT_FAST
+   - Channel should be 0 (PRIMARY)
+
+3. Check physical placement:
+   - All devices should be on same table (close range)
+   - Antennas properly connected
+   - Devices powered on
+
+4. Wait for mesh discovery:
+   - Devices broadcast node info every 3 hours (10800 seconds)
+   - May take a few minutes to see each other
+   - Can force discovery by sending a message
+
+================================================================================
+CONFIGURATION VERIFICATION COMMANDS
+================================================================================
+
+# Check Device 3 configuration
+python3 -m meshtastic --port <device3_port> --info | grep -A 10 "lora"
+
+# Check mesh nodes
+python3 -m meshtastic --port <device3_port> --info | grep -A 20 "Nodes in mesh"
+
+# Check all three devices
+for port in /dev/cu.usbserial-0001 /dev/cu.usbserial-4 <device3_port>; do
+  echo "=== $port ==="
+  python3 -m meshtastic --port "$port" --info | grep -E "Owner|region|modemPreset|nodedbCount"
+done
+
+================================================================================
+
